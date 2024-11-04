@@ -35,7 +35,7 @@ public struct JXBannerCellRegister {
     
     public init(type: UICollectionViewCell.Type?,
                 reuseIdentifier: String,
-                haveCell: Bool = false,
+                haveCell: Bool = true,
                 nib: UINib? = nil) {
         self.type = type
         self.haveCell = haveCell
