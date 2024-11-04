@@ -44,7 +44,6 @@ class JXCustomVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.addSubview(linearBanner)
         view.addSubview(converflowBanner)
         view.addSubview(customBanner)
@@ -86,45 +85,89 @@ class JXCustomVC: UIViewController {
 
 //MARK:- JXBannerDataSource
 extension JXCustomVC: JXBannerDataSource {
+    func jxBanner(_ banner: JXBannerType, cellForItemAt index: Int, bannerCollectionView: UICollectionView, cellIndexPath: IndexPath, cell: UICollectionViewCell) -> UICollectionViewCell {
+        var tempCell: JXBannerCell!
+        bannerCollectionView.register(JXBannerCell.self, forCellWithReuseIdentifier: "LinearBannerCell")
+        bannerCollectionView.register(JXBannerCell.self, forCellWithReuseIdentifier: "ConverflowBannerCell")
+        bannerCollectionView.register(JXBannerCell.self, forCellWithReuseIdentifier: "JXTransformCustomVCCell")
+        if banner.indentify == "linearBanner" {
+            tempCell = bannerCollectionView.dequeueReusableCell(
+                withReuseIdentifier: "LinearBannerCell",
+                for: cellIndexPath) as? JXBannerCell
+        }else if banner.indentify == "converflowBanner" {
+            tempCell = bannerCollectionView.dequeueReusableCell(
+                withReuseIdentifier: "ConverflowBannerCell",
+                for: cellIndexPath) as? JXBannerCell
+        }else {
+            tempCell = bannerCollectionView.dequeueReusableCell(
+                withReuseIdentifier: "JXTransformCustomVCCell",
+                for: cellIndexPath) as? JXBannerCell
+        }
+        tempCell.layer.cornerRadius = 8
+        tempCell.layer.masksToBounds = true
+        tempCell.layer.borderColor = UIColor.gray.cgColor
+        tempCell.layer.borderWidth = 1
+        if banner.indentify == "linearBanner" {
+            tempCell.imageView.image = UIImage(named: "\(index).jpg")
+        }else if banner.indentify == "converflowBanner" {
+            tempCell.imageView.image = UIImage(named: "\(index+5).jpg")
+        }else {
+            tempCell.imageView.image = UIImage(named: "\(index+10).jpg")
+        }
+        return tempCell
+        
+    }
+    
     
     func jxBanner(_ banner: JXBannerType)
         -> (JXBannerCellRegister) {
-
             if banner.indentify == "linearBanner" {
-                return JXBannerCellRegister(type: JXBannerCell.self,
-                                            reuseIdentifier: "LinearBannerCell")
+                return JXBannerCellRegister(type: JXBannerCell.self, reuseIdentifier: "LinearBannerCell", haveCell: false)
             }else if banner.indentify == "converflowBanner" {
                 return JXBannerCellRegister(type: JXBannerCell.self,
-                                            reuseIdentifier: "ConverflowBannerCell")
+                                            reuseIdentifier: "ConverflowBannerCell", haveCell: false)
             }else {
                 return JXBannerCellRegister(type: JXBannerCell.self,
-                                            reuseIdentifier: "JXTransformCustomVCCell")
+                                            reuseIdentifier: "JXTransformCustomVCCell", haveCell: false)
             }
     }
     
     func jxBanner(numberOfItems banner: JXBannerType)
         -> Int { return pageCount }
-    
-    func jxBanner(_ banner: JXBannerType,
-                  cellForItemAt index: Int,
-                  cell: UICollectionViewCell)
-        -> UICollectionViewCell {
-            let tempCell = cell as! JXBannerCell
-            tempCell.layer.cornerRadius = 8
-            tempCell.layer.masksToBounds = true
-            tempCell.layer.borderColor = UIColor.gray.cgColor
-            tempCell.layer.borderWidth = 1
-            if banner.indentify == "linearBanner" {
-                tempCell.imageView.image = UIImage(named: "\(index).jpg")
-            }else if banner.indentify == "converflowBanner" {
-                tempCell.imageView.image = UIImage(named: "\(index+5).jpg")
-            }else {
-                tempCell.imageView.image = UIImage(named: "\(index+10).jpg")
-            }
-            
-            tempCell.msgLabel.text = String(index) + "---来喽来喽,他真的来喽~"
-            return tempCell
-    }
+
+//    func jxBanner(_ banner: JXBannerType,
+//                  cellForItemAt index: Int, cellIndexPath: indexPath,
+//                  cell: UICollectionViewCell)
+//        -> UICollectionViewCell {
+//            var tempCell = cell as! JXBannerCell
+//
+//            if banner.indentify == "linearBanner" {
+//            }else if banner.indentify == "converflowBanner" {
+//                return JXBannerCellRegister(type: JXBannerCell.self,
+//                                            reuseIdentifier: "ConverflowBannerCell")
+//            }else {
+//                return JXBannerCellRegister(type: JXBannerCell.self,
+//                                            reuseIdentifier: "JXTransformCustomVCCell")
+//            }
+//            
+//
+//            
+//            let tempCell = cell as! JXBannerCell
+//            tempCell.layer.cornerRadius = 8
+//            tempCell.layer.masksToBounds = true
+//            tempCell.layer.borderColor = UIColor.gray.cgColor
+//            tempCell.layer.borderWidth = 1
+//            if banner.indentify == "linearBanner" {
+//                tempCell.imageView.image = UIImage(named: "\(index).jpg")
+//            }else if banner.indentify == "converflowBanner" {
+//                tempCell.imageView.image = UIImage(named: "\(index+5).jpg")
+//            }else {
+//                tempCell.imageView.image = UIImage(named: "\(index+10).jpg")
+//            }
+//            
+//            tempCell.msgLabel.text = String(index) + "---来喽来喽,他真的来喽~"
+//            return tempCell
+//    }
     
     func jxBanner(_ banner: JXBannerType,
                   params: JXBannerParams)

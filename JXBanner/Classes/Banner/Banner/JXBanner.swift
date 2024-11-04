@@ -390,13 +390,20 @@ UICollectionViewDelegate {
                         cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
             
-            let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: cellRegister.reuseIdentifier,
-                for: indexPath)
-            return dataSource?.jxBanner(self,
-                                        cellForItemAt: indexOfIndexPath(indexPath),
-                                        cell: cell) ?? cell
-    }
+            if cellRegister.haveCell {
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: cellRegister.reuseIdentifier,
+                    for: indexPath)
+                return dataSource?.jxBanner(self,
+                                            cellForItemAt: indexOfIndexPath(indexPath), bannerCollectionView: collectionView, cellIndexPath: indexPath,
+                                            cell: cell) ?? cell
+            } else {
+                return (dataSource?.jxBanner(self,
+                                             cellForItemAt: indexOfIndexPath(indexPath), bannerCollectionView: collectionView,cellIndexPath: indexPath,
+                                             cell: UICollectionViewCell()))!
+
+            }
+        }
     
     
     public func collectionView(_ collectionView: UICollectionView,

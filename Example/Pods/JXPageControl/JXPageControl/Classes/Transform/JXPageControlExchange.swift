@@ -2,7 +2,7 @@
 //  JXPageControlExchange.swift
 //  JXPageControl_Example
 //
-//  Created by Coder_TanJX on 2019/7/3.
+//  Created by 谭家祥 on 2019/7/3.
 //  Copyright © 2019 CocoaPods. All rights reserved.
 //
 
@@ -29,6 +29,7 @@ import UIKit
         if leftIndex == rightIndex {
             
             CATransaction.setDisableActions(true)
+            CATransaction.begin()
             
             let marginX: CGFloat = maxIndicatorSize.width + columnSpacing
             
@@ -59,6 +60,7 @@ import UIKit
         }else {
             
             CATransaction.setDisableActions(true)
+            CATransaction.begin()
             
             let marginX: CGFloat = maxIndicatorSize.width + columnSpacing
             

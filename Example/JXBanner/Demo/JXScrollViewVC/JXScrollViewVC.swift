@@ -45,10 +45,7 @@ extension JXScrollViewVC: JXBannerDataSource {
     func jxBanner(numberOfItems banner: JXBannerType)
         -> Int { return pageCount }
     
-    func jxBanner(_ banner: JXBannerType,
-                  cellForItemAt index: Int,
-                  cell: UICollectionViewCell)
-        -> UICollectionViewCell {
+    func jxBanner(_ banner: JXBannerType, cellForItemAt index: Int, bannerCollectionView: UICollectionView, cellIndexPath: IndexPath, cell: UICollectionViewCell) -> UICollectionViewCell {
             if let tempCell = cell as? JXScrollViewCell {
                 tempCell.imgView.image = UIImage(named: "\(index).jpg")
                 tempCell.title.text = String(index) + "---来喽来喽,他真的来喽~"

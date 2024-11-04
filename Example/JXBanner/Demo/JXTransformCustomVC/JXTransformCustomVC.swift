@@ -54,10 +54,7 @@ extension JXTransformCustomVC: JXBannerDataSource {
     func jxBanner(numberOfItems banner: JXBannerType)
         -> Int { return pageCount }
     
-    func jxBanner(_ banner: JXBannerType,
-                  cellForItemAt index: Int,
-                  cell: UICollectionViewCell)
-        -> UICollectionViewCell {
+    func jxBanner(_ banner: JXBannerType, cellForItemAt index: Int, bannerCollectionView: UICollectionView, cellIndexPath: IndexPath, cell: UICollectionViewCell) -> UICollectionViewCell {
             let tempCell = cell as! JXBannerCell
             tempCell.layer.cornerRadius = 8
             tempCell.layer.masksToBounds = true

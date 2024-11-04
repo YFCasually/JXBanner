@@ -2,7 +2,7 @@
 //  JXPageControlBase.swift
 //  JXPageControl_Example
 //
-//  Created by Coder_TanJX on 2019/7/10.
+//  Created by 谭家祥 on 2019/7/10.
 //  Copyright © 2019 CocoaPods. All rights reserved.
 //
 
@@ -24,7 +24,7 @@ import UIKit
         addSubview(contentView)
     }
     
-    open override var contentMode: UIViewContentMode {
+    open override var contentMode: UIView.ContentMode {
         didSet {
             switch contentMode {
                 

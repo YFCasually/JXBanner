@@ -2,7 +2,7 @@
 //  JXPageControlType.swift
 //  JXPageControl
 //
-//  Created by Coder_TanJX on 2019/6/7.
+//  Created by 谭家祥 on 2019/6/7.
 //
 
 import UIKit
@@ -70,7 +70,7 @@ public protocol JXPageControlType {
     var contentAlignment: JXPageControlAlignment { get set }
     
     /// The content location of the system UIView
-    var contentMode: UIViewContentMode { get set }
+    var contentMode: UIView.ContentMode { get set }
     
     /// Inactive hollow figure
     var isInactiveHollow: Bool { get set }

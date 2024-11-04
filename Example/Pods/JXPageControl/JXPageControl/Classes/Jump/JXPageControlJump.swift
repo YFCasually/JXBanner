@@ -2,7 +2,7 @@
 //  JXPageControlJump.swift
 //  JXPageControl
 //
-//  Created by Coder_TanJX on 2019/6/7.
+//  Created by 谭家祥 on 2019/6/7.
 //
 
 import UIKit
@@ -26,6 +26,7 @@ import UIKit
             else { return }
         
         CATransaction.setDisableActions(!isAnimation)
+        CATransaction.begin()
         
         let marginX = (maxIndicatorSize.width - activeSize.width) * 0.5
         let marginyY = (maxIndicatorSize.height - activeSize.height) * 0.5

@@ -18,7 +18,6 @@ public protocol JXBannerType: UIView {
     
     /// Distinguish the banner
     var indentify: String? { get set }
-    
     /// The refresh UI
     func reloadView()
     
@@ -31,22 +30,15 @@ public struct JXBannerCellRegister {
     
     var type: UICollectionViewCell.Type?
     var reuseIdentifier: String
+    var haveCell: Bool
     var nib: UINib?
     
-    /**
-    Register cells so that we can distinguish and retrieve reused cell cache pools from the cache pool
-    
-    - parameters:
-    - type:             When you are not using the nib cell file, you must set the  'type' to the cell class!!
-    - reuseIdentifier:                   If you use multiple jxbanners in your app, please set different values to facilitate the differentiation
-    - nib:                                   The nib parameter assignment must be done when using the nib cell file !!!
-     
-    - returns: Number Of Items
-    */
     public init(type: UICollectionViewCell.Type?,
                 reuseIdentifier: String,
+                haveCell: Bool = false,
                 nib: UINib? = nil) {
         self.type = type
+        self.haveCell = haveCell
         self.reuseIdentifier = reuseIdentifier
         self.nib = nib
     }

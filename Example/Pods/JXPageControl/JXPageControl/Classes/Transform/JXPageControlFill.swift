@@ -2,7 +2,7 @@
 //  JXPageControlFill.swift
 //  JXPageControl_Example
 //
-//  Created by Coder_TanJX on 2019/6/10.
+//  Created by 谭家祥 on 2019/6/10.
 //  Copyright © 2019 CocoaPods. All rights reserved.
 //
 
@@ -226,7 +226,7 @@ extension JXPageControlFill {
         })
         
         let mask = CAShapeLayer()
-        mask.fillRule = kCAFillRuleEvenOdd
+        mask.fillRule = CAShapeLayerFillRule.evenOdd
         let bounds = UIBezierPath(rect: layer.bounds)
         bounds.append(UIBezierPath(ovalIn: insetRect))
         mask.path = bounds.cgPath

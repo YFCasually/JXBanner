@@ -43,6 +43,8 @@ public protocol JXBannerDataSource: class {
      */
     func jxBanner(_ banner: JXBannerType,
                   cellForItemAt index: Int,
+                  bannerCollectionView: UICollectionView,
+                  cellIndexPath: IndexPath,
                   cell: UICollectionViewCell)
         -> UICollectionViewCell
     
