@@ -313,7 +313,10 @@ extension JXBanner {
     
     /// Began to drag and drop
     public func scrollViewWillBeginDragging(
-        _ scrollView: UIScrollView) { pause() }
+        _ scrollView: UIScrollView) {
+            delegate?.jxBannerWillBeginDragging(scrollView)
+            pause()
+        }
     
     /// The drag is about to end
     public func scrollViewWillEndDragging(

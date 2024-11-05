@@ -41,6 +41,8 @@ public protocol JXBannerDelegate: class {
     
     func jxBanner(_ banner: JXBannerType,
                   coverView: UIView)
+    
+    func jxBannerWillBeginDragging(_ scrollView: UIScrollView)
 }
 
 /// The default implementation
@@ -56,4 +58,5 @@ public extension JXBannerDelegate {
     
     func jxBanner(_ banner: JXBannerType,
                   coverView: UIView) {}
+    func jxBannerWillBeginDragging(_ scrollView: UIScrollView) {}
 }
